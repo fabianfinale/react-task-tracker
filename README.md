@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+### `yarn start-server`
+
+Runs the JSON server in the development mode on [http://localhost:5000](http://localhost:5000).
+
+### `yarn dev`
+
+Runs both client and server in the development mode, thanks to [Concurrently](https://github.com/open-cli-tools/concurrently#readme).
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\

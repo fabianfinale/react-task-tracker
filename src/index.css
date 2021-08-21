@@ -1,13 +1,88 @@
+/* Typography */
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Basic Layout */
+.app {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+/* Header component */
+.header {
+  align-self: stretch;
+  background-color: #f4f5f6;
+  text-align: center;
+}
+
+.header__logo {
+  box-sizing: content-box;
+  height: 10rem;
+  padding: 5rem 0 0.5rem;
+}
+
+.header__title {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .header__title {
+    font-size: 4.6rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .header__logo {
+    height: 20rem;
+  }
+}
+
+/* TaskBar Component */
+.task-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .task-bar {
+    padding-bottom: 4rem;
+  }
+}
+
+/* TasksList component */
+.tasks-list {
+  height: 100%;
+  padding-top: 2rem;
+}
+
+/* Footer */
+.footer {
+  align-items: center;
+  align-self: stretch;
+  background-color: #f4f5f6;
+  display: flex;
+  justify-content: center;
+}
+
+.footer__copyright {
+  margin: 1rem 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__copyright {
+    font-weight: 400;
+  }
 }
