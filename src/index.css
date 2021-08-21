@@ -56,6 +56,30 @@ body {
   padding-bottom: 2rem;
 }
 
+.task-bar .task-bar__input--error {
+  border: 1px solid #f44336;
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+.task-bar .task-bar__input--error::placeholder {
+  color: #f44336;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .task-bar {
     padding-bottom: 4rem;
