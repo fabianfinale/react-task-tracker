@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import AddTask from './AddTask';
 
-const Header = () => {
+const Header = ({ addTask }) => {
   const [task, setTask] = useState('');
   const [error, setError] = useState('');
 
@@ -20,14 +21,15 @@ const Header = () => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ description: task }),
+      body: JSON.stringify({ description: task, completed: false }),
     };
-    console.log('requestOptions.body :>> ', requestOptions.body);
 
     const response = await fetch('http://localhost:5000/tasks', requestOptions);
 
+    setTask('');
+
     const newTask = await response.json();
-    console.log(newTask);
+    addTask(newTask);
   };
 
   return (
@@ -52,6 +54,10 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  addTask: PropTypes.func.isRequired,
 };
 
 export default Header;

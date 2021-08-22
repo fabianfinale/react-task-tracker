@@ -16,6 +16,7 @@ const AddTask = ({
         type='text'
         value={value}
         onChange={handleChange}
+        onKeyDown={(e) => (e.key === 'Enter' ? handleClick() : null)}
         placeholder={!error ? 'Add a task' : error}
       />
       <button onClick={handleClick}>Add Task</button>
