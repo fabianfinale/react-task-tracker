@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Task from './Task';
 import { GlobalContext } from '../context/GlobalState';
 
 const TasksList = () => {
-  const context = useContext(GlobalContext);
-  const { tasks, changeTaskStatus, deleteTask } = context;
+  const { tasks, status, loadTasks, deleteTask, changeTaskStatus } =
+    useContext(GlobalContext);
+
+  useEffect(() => {
+    if (status === 'idle') loadTasks();
+  }, [status, loadTasks]);
+
   return (
     <div className='tasks-list'>
-      {Array.isArray(tasks) ? (
+      {status === 'loading' && <h2>Loading</h2>}
+      {status === 'finished' &&
         tasks.map((task) => (
           <Task
             key={task.id}
@@ -15,10 +21,7 @@ const TasksList = () => {
             onStatusChange={changeTaskStatus}
             onDelete={deleteTask}
           />
-        ))
-      ) : (
-        <h2>Loading</h2>
-      )}
+        ))}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const Task = ({
         className='task__icon task__icon--status'
         src={require(`../assets/img/${imageURL}`).default}
         alt=''
-        onClick={() => handleStatusChange(id)}
+        onClick={() => handleStatusChange(id, !completed)}
       />{' '}
       <p className={descriptionClasses}>{description}</p>
       <img

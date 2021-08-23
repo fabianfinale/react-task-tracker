@@ -20,18 +20,8 @@ const Header = () => {
       return toast.error('The task could not be added');
     }
 
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ description: task, completed: false }),
-    };
-
-    const response = await fetch('http://localhost:5000/tasks', requestOptions);
-
+    addTask(task);
     setTask('');
-
-    const newTask = await response.json();
-    addTask(newTask);
   };
 
   return (
