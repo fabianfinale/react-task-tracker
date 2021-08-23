@@ -1,30 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import Task from './Task';
+import { GlobalContext } from '../context/GlobalState';
 
-const TasksList = ({
-  tasks,
-  onDelete: handleDelete,
-  onStatusChange: handleStatusChange,
-}) => {
+const TasksList = () => {
+  const context = useContext(GlobalContext);
+  const { tasks, changeTaskStatus, deleteTask } = context;
   return (
     <div className='tasks-list'>
-      {tasks.map((task) => (
-        <Task
-          key={task.id}
-          task={task}
-          onStatusChange={handleStatusChange}
-          onDelete={handleDelete}
-        />
-      ))}
+      {Array.isArray(tasks) ? (
+        tasks.map((task) => (
+          <Task
+            key={task.id}
+            task={task}
+            onStatusChange={changeTaskStatus}
+            onDelete={deleteTask}
+          />
+        ))
+      ) : (
+        <h2>Loading</h2>
+      )}
     </div>
   );
-};
-
-TasksList.propTypes = {
-  tasks: PropTypes.array.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onStatusChange: PropTypes.func.isRequired,
 };
 
 export default TasksList;

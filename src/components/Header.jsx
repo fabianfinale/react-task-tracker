@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
+import { GlobalContext } from '../context/GlobalState';
 import AddTask from './AddTask';
 
-const Header = ({ addTask }) => {
+const Header = () => {
   const [task, setTask] = useState('');
   const [error, setError] = useState('');
+
+  const { addTask } = useContext(GlobalContext);
 
   const handleChange = (e) => {
     setError('');
@@ -54,10 +56,6 @@ const Header = ({ addTask }) => {
       </div>
     </div>
   );
-};
-
-Header.propTypes = {
-  addTask: PropTypes.func.isRequired,
 };
 
 export default Header;
