@@ -7,7 +7,7 @@ export const reducer = (state, action) => {
       return { tasks: action.payload, status: 'finished' };
     },
     TASKS_LOAD_FAILED: () => {
-      return { status: 'finished' };
+      return { status: 'error' };
     },
     TASK_ADDED: () => {
       return { tasks: [...state.tasks, action.payload], status: 'finished' };

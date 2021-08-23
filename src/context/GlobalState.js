@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react';
+import { toast } from 'react-toastify';
 import { reducer } from './AppReducer';
 
 export const initialState = {
@@ -21,6 +22,7 @@ export const CustomProvider = ({ children }) => {
 
       dispatch({ type: 'TASKS_LOADED', payload: data });
     } catch (error) {
+      toast.error(error.message);
       dispatch({ type: 'TASKS_LOAD_FAILED', payload: error.message });
     }
   };
@@ -39,7 +41,9 @@ export const CustomProvider = ({ children }) => {
       );
       const newTask = await response.json();
       dispatch({ type: 'TASK_ADDED', payload: newTask });
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const deleteTask = async (id) => {
@@ -50,7 +54,9 @@ export const CustomProvider = ({ children }) => {
     try {
       await fetch(`http://localhost:5000/tasks/${id}`, requestOptions);
       dispatch({ type: 'TASK_DELETED', payload: id });
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const changeTaskStatus = async (id, completed) => {
@@ -63,7 +69,9 @@ export const CustomProvider = ({ children }) => {
     try {
       await fetch(`http://localhost:5000/tasks/${id}`, requestOptions);
       dispatch({ type: 'TASK_STATUS_CHANGED', payload: id });
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
