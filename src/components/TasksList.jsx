@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Task from './Task';
 import { GlobalContext } from '../context/GlobalState';
+import Loader from './Loader';
 
 const TasksList = () => {
   const { tasks, status, loadTasks, deleteTask, changeTaskStatus } =
@@ -12,7 +13,7 @@ const TasksList = () => {
 
   return (
     <div className='tasks-list'>
-      {status === 'loading' && <h2>Loading</h2>}
+      {status === 'loading' && <Loader />}
       {status === 'finished' &&
         tasks.map((task) => (
           <Task

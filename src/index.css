@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #9b4dca;
+  --color-secondary: #f4f5f6;
+  --color-error: #f44336;
+  --color-dark: #655d5d;
+}
+
 /* Typography */
 html {
   height: 100%;
@@ -16,8 +23,8 @@ body {
 
 /* Basic Layout */
 ::selection {
-  background-color: #9b4dca;
-  color: #f4f5f6;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .app {
@@ -29,10 +36,10 @@ body {
   width: 100%;
 }
 
-/* Header component */
+/* Header Component */
 .header {
   align-self: stretch;
-  background-color: #f4f5f6;
+  background-color: var(--color-secondary);
   text-align: center;
 }
 
@@ -66,12 +73,12 @@ body {
 }
 
 .task-bar .task-bar__input--error {
-  border: 1px solid #f44336;
+  border: 1px solid var(--color-error);
   animation: shake 0.2s ease-in-out 0s 2;
 }
 
 .task-bar .task-bar__input--error::placeholder {
-  color: #f44336;
+  color: var(--color-error);
 }
 
 @keyframes shake {
@@ -95,20 +102,71 @@ body {
   }
 }
 
-/* TasksList component */
+/* Loader Component */
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--color-dark);
+  letter-spacing: 0.2em;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: var(--color-primary);
+  position: absolute;
+  animation: load 0.7s infinite alternate ease-in-out;
+}
+
+.loader::before {
+  top: 0;
+}
+
+.loader::after {
+  bottom: 0;
+}
+@keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px;
+  }
+}
+
+/* TasksList Component */
 .tasks-list {
   flex-grow: 1;
-  /* height: 100%; */
   padding: 2rem;
   width: 100%;
   max-width: 112rem;
 }
 
 .task-list__task {
-  background: #f4f5f6;
+  background: var(--color-secondary);
   border: 0;
-  border-left: 0.3rem solid #9b4dca;
-  color: #655d5d;
+  border-left: 0.3rem solid var(--color-primary);
+  color: var(--color-dark);
   display: flex;
   gap: 2rem;
   justify-content: space-between;
@@ -131,11 +189,11 @@ body {
   cursor: pointer;
 }
 
-/* Footer */
+/* Footer Component */
 .footer {
   align-items: center;
   align-self: stretch;
-  background-color: #f4f5f6;
+  background-color: var(--color-secondary);
   display: flex;
   margin-top: auto;
   justify-content: center;
